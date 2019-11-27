@@ -1,6 +1,6 @@
 // ./react-redux-client/src/actions/comapnyActions.js
 
-const apiUrl = "/api/company";
+const apiUrl = "/api/company/";
 
 export const showCompany = () => {
   return {
@@ -112,6 +112,7 @@ export const fetchCompanyById = (companyId) => {
         console.log(response)
         if (response.ok) {
           response.json().then(data => {
+            console.log(data);
             dispatch(fetchCompanySuccess(data.company[0], data.message));
           })
         }
@@ -208,21 +209,19 @@ export const editCompanyFailed = (error) => {
 export const deleteCompany = (company) => {
   return (dispatch) => {
     dispatch(deleteCompanyRequest(company));
-    return fetch(apiUrl + '/'+company._id, {
+    return fetch(apiUrl + company._id, {
       method: 'delete'
     }).then(response => {
       if (response.ok) {
         response.json().then(data => {
           dispatch(deleteCompanySuccess(data.message));
-        })
-      }
-      else {
+        });
+      } else {
         response.json().then(error => {
           dispatch(deleteCompanyFailed(error));
-        })
+        });
       }
-    })
-
+    });
   }
 }
 

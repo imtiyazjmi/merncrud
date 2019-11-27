@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class CompanyDetail extends React.Component {
   componentDidMount(){
-    this.props.mappedfetchCompanyById(this.props.params.id);
+    this.props.mappedfetchCompanyById(this.props.params.companyId);
   }
 
   render(){

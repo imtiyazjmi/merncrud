@@ -10,9 +10,9 @@ import CompanyDetail from './containers/CompanyDetail';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Company} />
-      <Route path="/company" component={Company}>
-        <Route path="/company/:companyId" component={CompanyDetail} />
-      </Route>
+      <Route path="/company" component={Company} />
+      <Route path="/company/:companyId" component={CompanyDetail} />
+      
      {/* <IndexRoute component={Todos} />
      <Route path="/:id" component={Todo} /> */}
      
